@@ -1,11 +1,15 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
+const cors = require('cors')
 
 const app = express();
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, '..', 'dist')));
+
+app.use(cors())
+app.disable('etag');
 
 const routes = require('./routes')
 app.use('/', routes);

@@ -1,6 +1,5 @@
 {
-  "name": "yang-gallery",
-  "version": "1.0.0",
+git   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,6 +21,7 @@
     "@babel/plugin-proposal-throw-expressions": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
@@ -39,7 +39,9 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "@babel/runtime": "^7.1.5",
     "connected-react-router": "^5.0.1",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "history": "^4.7.2",
     "react": "^16.6.3",
