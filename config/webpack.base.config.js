@@ -32,6 +32,5 @@ module.exports = {
             filename: './index.html'
         }),
         new ExtractTextPlugin('style.css')
-    ],
-    devtool: 'source-map'
+    ]
 }
