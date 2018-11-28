@@ -5,7 +5,6 @@ const baseConfig = require('./webpack.base.config');
 
 const developmentConfiguration = function () {
     return {
-        devtool: 'source-map'
     };
 }
 
