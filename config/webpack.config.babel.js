@@ -1,8 +1,9 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
-module.exports = {
+export default {
     entry: path.join(__dirname, '..', 'app/src/index.js'),
     output: {
         path: path.join(__dirname, '..', 'dist'),
@@ -11,11 +12,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
+                test: /\.js/,
+                exclude: /(node_modules|bower_components)/,
+                use: [{
                     loader: 'babel-loader'
-                }
+                }]
             },
             {
                 test: /\.scss$/,
@@ -28,10 +29,16 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './app/src/index.html',
-            filename: './index.html'
+            title: 'Custom template',
+            template: path.join(__dirname, '..', 'app/src/index.html')
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'defer'
         }),
         new ExtractTextPlugin('style.css')
     ],
+    stats: {
+        colors: true
+    },
     devtool: 'source-map'
-}
+};
