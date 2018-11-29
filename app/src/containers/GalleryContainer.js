@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import ImageGallery from 'react-image-gallery';
 
-const PREFIX_URL = 'https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/';
-
 class GalleryContainer extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             showIndex: false,
@@ -27,12 +25,17 @@ class GalleryContainer extends Component {
         this.setState({images: []});
     }
 
-    async componentDidMount () {
-        const dir = this.props.dir
-        const response = await fetch('/gallery/' + dir)
-        const json = await response.json()
-        const images = await json.images
-        this.setState({images: images});
+    componentDidMount () {
+        const self = this
+        async function fetchLatestImages () {
+            const dir = self.props.dir
+            const response = await fetch('/gallery/' + dir)
+            const json = await response.json()
+            const images = await json.images
+            self.setState({images: images});
+            setTimeout(fetchLatestImages, 6000 * 5);
+        }
+        fetchLatestImages()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -67,18 +70,6 @@ class GalleryContainer extends Component {
 
     _onPlay(index) {
         console.debug('playing from index', index);
-    }
-
-    _getStaticImages() {
-        let images = [];
-        for (let i = 2; i < 12; i++) {
-            images.push({
-                original: `${PREFIX_URL}${i}.jpg`,
-                description: 'Custom class for slides & thumbnails'
-            });
-        }
-
-        return images;
     }
 
     _resetVideo() {
