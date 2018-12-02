@@ -267,7 +267,7 @@ function (_Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(GalleryContainer).call(this, props));
     _this.state = {
       showIndex: false,
-      showBullets: true,
+      showBullets: false,
       infinite: true,
       showThumbnails: false,
       showFullscreenButton: false,

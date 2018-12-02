@@ -7,7 +7,7 @@ class GalleryContainer extends Component {
 
         this.state = {
             showIndex: false,
-            showBullets: true,
+            showBullets: false,
             infinite: true,
             showThumbnails: false,
             showFullscreenButton: false,
