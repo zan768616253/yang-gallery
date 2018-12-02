@@ -1,10 +1,11 @@
 import React from 'react'
 
-import GalleryContainer from './containers/GalleryContainer'
+import GalleryMain from './containers/Gallery'
+import GalleryHeader from './containers/Header'
 
 export default () => (
-    <div className='frame-container'>
-        <GalleryContainer dir={'left'}/>
-        <GalleryContainer dir={'right'}/>
+    <div>
+        <GalleryHeader />
+        <GalleryMain />
     </div>
 )

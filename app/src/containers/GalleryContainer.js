@@ -10,41 +10,35 @@ class GalleryContainer extends Component {
             showBullets: true,
             infinite: true,
             showThumbnails: false,
-            showFullscreenButton: true,
-            showGalleryFullscreenButton: true,
-            showPlayButton: true,
-            showGalleryPlayButton: true,
-            showNav: true,
+            showFullscreenButton: false,
+            showGalleryFullscreenButton: false,
+            showPlayButton: props.showPlayButton || false,
+            showGalleryPlayButton: props.showGalleryPlayButton || false,
+            showNav: false,
             isRTL: false,
             slideDuration: 450,
             slideInterval: 5000,
             thumbnailPosition: 'bottom',
             showVideo: {},
+            images: props.images
         }
-
-        this.setState({images: []});
     }
 
     componentDidMount () {
-        const self = this
-        async function fetchLatestImages () {
-            const dir = self.props.dir
-            const response = await fetch('/gallery/' + dir)
-            const json = await response.json()
-            const images = await json.images
-            self.setState({images: images});
-            setTimeout(fetchLatestImages, 6000 * 5);
-        }
-        fetchLatestImages()
+        this._imageGallery.pause();
+        this._imageGallery.play();
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.slideInterval !== prevState.slideInterval ||
-            this.state.slideDuration !== prevState.slideDuration) {
-            // refresh setInterval
-            this._imageGallery.pause();
-            this._imageGallery.play();
-        }
+        // if (this.state.slideInterval !== prevState.slideInterval ||
+        //     this.state.slideDuration !== prevState.slideDuration) {
+        //     // refresh setInterval
+        //     this._imageGallery.pause();
+        //     this._imageGallery.play();
+        // }
+
+        this._imageGallery.pause();
+        this._imageGallery.play();
     }
 
     _onImageClick(event) {
@@ -85,7 +79,6 @@ class GalleryContainer extends Component {
     }
 
     render() {
-        console.log('this.images', this.state.images)
         return (
             <ImageGallery
                 ref={i => this._imageGallery = i}

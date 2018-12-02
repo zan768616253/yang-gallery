@@ -152,6 +152,7 @@ input.app-interval-input {
 .frame-container {
   display: flex;
   flex-direction: row;
+  margin-top: 30px;
 
   .app-image-gallery {
     width: calc(50% - 5px);
@@ -159,6 +160,21 @@ input.app-interval-input {
     &:first-of-type {
       margin-right: 10px;
     }
+  }
+}
+
+.gallery-header {
+  background: #178ccb;
+  padding: 20px 0;
+  color: #fff;
+
+  h1 {
+    font-size: 38px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 20px 0 10px;
+    font-weight: 600;
   }
 }
 

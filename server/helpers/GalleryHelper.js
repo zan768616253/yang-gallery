@@ -12,7 +12,7 @@ module.exports = class GalleryHelper {
         files = files.map(file => {
             return {
                 original: 'gallery/' + this.gallery + '/' + file,
-                description: 'random description for now',
+                description: file.replace(/.[^/.]+$/, ''),
                 create: fs.statSync(dir + '/' + file).mtime.getTime()
             }
         }).sort((a, b) => {
