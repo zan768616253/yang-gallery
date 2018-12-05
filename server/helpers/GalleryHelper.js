@@ -16,7 +16,7 @@ module.exports = class GalleryHelper {
                 create: fs.statSync(dir + '/' + file).mtime.getTime()
             }
         }).sort((a, b) => {
-            return a.time - b.time
+            return a.create - b.create
         }).slice(0, count)
 
         return files
